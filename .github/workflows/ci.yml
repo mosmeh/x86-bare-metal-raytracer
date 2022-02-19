@@ -1,0 +1,18 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+    build:
+        runs-on: ubuntu-20.04
+        strategy:
+            fail-fast: false
+            matrix:
+                compiler: [gcc, clang]
+        steps:
+            - uses: actions/checkout@v2
+            - run: sudo apt-get install -y gcc-multilib grub2 mtools xorriso
+            - run: make
+              env:
+                  CC: ${{ matrix.compiler }}
+            - run: grub-file --is-x86-multiboot src/raytracer

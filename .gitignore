@@ -1,0 +1,6 @@
+.DS_Store
+compile_flags.txt
+disk_image
+iso/boot/raytracer
+src/*.o
+src/raytracer
