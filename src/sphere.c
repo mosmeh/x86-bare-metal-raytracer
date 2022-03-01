@@ -1,4 +1,5 @@
 #include "sphere.h"
+#include "aabb.h"
 #include "hittable.h"
 #include "ray.h"
 
@@ -31,4 +32,9 @@ bool sphere_hit(const sphere* self, const ray* ray, double t_min, double t_max,
     rec->mat_ptr = &self->material;
 
     return true;
+}
+
+aabb sphere_bounding_box(const sphere* self) {
+    return (aabb){vec3_subs(self->center, self->radius),
+                  vec3_adds(self->center, self->radius)};
 }

@@ -4,7 +4,7 @@ CFLAGS := -std=c11 -m32 -nostdlib -ffreestanding -Wall -Wextra -O2 -ffast-math
 
 all: raytracer
 
-raytracer: entry.o main.o common.o tiny_stdlib.o alloc.o sphere.o material.o camera.o hittable.o renderer.o
+raytracer: entry.o main.o common.o tiny_stdlib.o alloc.o sphere.o material.o camera.o hittable.o renderer.o aabb.o bvh.o
 	$(CC) $(CFLAGS) -Wl,-Tlinker.ld -o '$@' $^
 
 entry.o: entry.S

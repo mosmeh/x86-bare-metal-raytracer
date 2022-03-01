@@ -143,6 +143,8 @@ void renderer_generate_random_scene(renderer* self) {
 
     material material3 = material_create_metal((vec3){0.7, 0.6, 0.5}, 0);
     hittable_list_add_sphere(self->world, (vec3){4, 1, 0}, 1, material3);
+
+    hittable_list_construct_bvh(self->world);
 }
 
 static vec3 ray_color(const ray* r, const hittable_list* hittables,

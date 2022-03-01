@@ -34,6 +34,15 @@ double fmin(double x, double y) {
     return x < y ? x : y;
 }
 
+double fmax(double x, double y) {
+    if (isnan(x))
+        return y;
+    if (isnan(y))
+        return x;
+
+    return x > y ? x : y;
+}
+
 double fabs(double x) {
     __asm__("fabs" : "+t"(x));
     return x;

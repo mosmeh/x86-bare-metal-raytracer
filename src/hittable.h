@@ -17,6 +17,6 @@ bool hittable_list_add_sphere(hittable_list*, vec3 center, double radius,
                               material);
 
 void hittable_list_clear(hittable_list*);
-
+void hittable_list_construct_bvh(hittable_list*);
 bool hittable_list_hit(const hittable_list*, const ray*, double t_min,
                        double t_max, hit_record*);

@@ -14,6 +14,10 @@ static inline vec3 vec3_addv(vec3 a, vec3 b) {
     return (vec3){a.x + b.x, a.y + b.y, a.z + b.z};
 }
 
+static inline vec3 vec3_adds(vec3 a, double b) {
+    return (vec3){a.x + b, a.y + b, a.z + b};
+}
+
 static inline void vec3_add_assignv(vec3* a, vec3 b) {
     a->x += b.x;
     a->y += b.y;
@@ -22,6 +26,10 @@ static inline void vec3_add_assignv(vec3* a, vec3 b) {
 
 static inline vec3 vec3_subv(vec3 a, vec3 b) {
     return (vec3){a.x - b.x, a.y - b.y, a.z - b.z};
+}
+
+static inline vec3 vec3_subs(vec3 a, double b) {
+    return (vec3){a.x - b, a.y - b, a.z - b};
 }
 
 static inline void vec3_sub_assignv(vec3* a, vec3 b) {

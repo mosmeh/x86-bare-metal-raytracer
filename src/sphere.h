@@ -13,3 +13,5 @@ typedef struct sphere {
 
 bool sphere_hit(const sphere*, const ray*, double t_min, double t_max,
                 hit_record*);
+
+aabb sphere_bounding_box(const sphere*);
