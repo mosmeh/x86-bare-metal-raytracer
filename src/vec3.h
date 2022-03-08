@@ -8,7 +8,7 @@ typedef struct vec3 {
     double x, y, z;
 } vec3;
 
-static const vec3 VEC3_ZERO = {};
+static const vec3 VEC3_ZERO = {0};
 
 static inline vec3 vec3_addv(vec3 a, vec3 b) {
     return (vec3){a.x + b.x, a.y + b.y, a.z + b.z};

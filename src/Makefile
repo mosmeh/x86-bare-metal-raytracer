@@ -1,4 +1,4 @@
-CFLAGS := -std=c11 -m32 -nostdlib -ffreestanding -Wall -Wextra -O2 -ffast-math
+CFLAGS := -std=c11 -m32 -nostdlib -ffreestanding -Wall -Wextra -pedantic -O2 -ffast-math
 
 .PHONY: all clean
 

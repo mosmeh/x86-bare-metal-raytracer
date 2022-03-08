@@ -186,7 +186,7 @@ void renderer_render(renderer* self) {
     {
         double scale = 1.0 / self->samples;
         uint32_t* pixel =
-            (uint32_t*)(self->framebuffer +
+            (uint32_t*)((uintptr_t)self->framebuffer +
                         self->scanline_y * self->mbi->framebuffer_pitch);
         vec3* pixel_color = row_pixel_colors;
         for (uint32_t x = 0; x < self->image_width; ++x)
@@ -200,7 +200,7 @@ void renderer_render(renderer* self) {
 
     if (self->draw_scanline) {
         uint32_t* pixel =
-            (uint32_t*)(self->framebuffer +
+            (uint32_t*)((uintptr_t)self->framebuffer +
                         self->scanline_y * self->mbi->framebuffer_pitch);
         for (uint32_t x = 0; x < self->image_width; ++x)
             *pixel++ = self->scanline_color;
