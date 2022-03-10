@@ -21,8 +21,8 @@ static void out8(uint16_t port, uint8_t data) {
 }
 
 static void handle_keyboard(renderer* renderer) {
-    int32_t timeout = 1024;
-    while (timeout > 0) {
+    int32_t timeout = 0;
+    while (timeout >= 0) {
         if (!(in8(PS2_STATUS) & 1)) {
             --timeout;
             continue;
