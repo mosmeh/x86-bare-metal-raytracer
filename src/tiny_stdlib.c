@@ -1,11 +1,27 @@
 #include <math.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
 
 void* memset(void* s, int c, size_t n) {
     uintptr_t dest = (uintptr_t)s;
-    __asm__ volatile("rep stosb\n"
+
+    bool aligned = !((uintptr_t)s & (_Alignof(uint32_t) - 1));
+    if (aligned && n >= sizeof(uint32_t)) {
+        size_t nd = n / sizeof(uint32_t);
+        uint32_t d =
+            (uint32_t)c << 24 | (uint32_t)c << 16 | (uint32_t)c << 8 | c;
+        __asm__ volatile("rep stosl"
+                         : "=D"(dest)
+                         : "D"(dest), "c"(nd), "a"(d)
+                         : "memory");
+        n -= sizeof(uint32_t) * nd;
+        if (n == 0)
+            return s;
+    }
+
+    __asm__ volatile("rep stosb"
                      : "=D"(dest), "=c"(n)
                      : "0"(dest), "1"(n), "a"(c)
                      : "memory");
